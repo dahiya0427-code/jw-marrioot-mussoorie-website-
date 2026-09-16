@@ -23,11 +23,11 @@ export async function generateMetadata({
   const venue = getDiningVenue(slug);
 
   if (!venue) {
-    return { title: "Dining | JW Marriott Mussoorie Walnut Grove Resort & Spa" };
+    return { title: "Dining" };
   }
 
   return {
-    title: `${venue.name} | JW Marriott Mussoorie Walnut Grove Resort & Spa`,
+    title: venue.name,
     description: venue.hook,
   };
 }

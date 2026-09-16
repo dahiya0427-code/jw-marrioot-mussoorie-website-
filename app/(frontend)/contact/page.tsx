@@ -11,7 +11,7 @@ import {
 } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "Contact | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Contact",
   description:
     "Get in touch with JW Marriott Mussoorie Walnut Grove Resort & Spa — address, phone, and enquiry form.",
 };

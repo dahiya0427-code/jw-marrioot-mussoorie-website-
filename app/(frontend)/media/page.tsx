@@ -11,7 +11,7 @@ import {
 } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "Media & Press | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Media & Press",
   description:
     "Press and recognition, press kit, and media contact details for JW Marriott Mussoorie Walnut Grove Resort & Spa.",
 };

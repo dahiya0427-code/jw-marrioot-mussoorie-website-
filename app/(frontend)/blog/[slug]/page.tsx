@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { ContentCard } from "@/components/ContentCard";
 import { Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { BLOG_POSTS, getBlogPost, getRelatedPosts } from "@/lib/blog";
+import { buildBlogPostingSchema } from "@/lib/schema";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -21,11 +23,11 @@ export async function generateMetadata({
   const post = getBlogPost(slug);
 
   if (!post) {
-    return { title: "Blog | JW Marriott Mussoorie Walnut Grove Resort & Spa" };
+    return { title: "Blog" };
   }
 
   return {
-    title: `${post.title} | JW Marriott Mussoorie Walnut Grove Resort & Spa`,
+    title: post.title,
     description: post.excerpt,
   };
 }
@@ -42,6 +44,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   return (
     <>
+      <JsonLd data={buildBlogPostingSchema(post)} />
       {/* Hero */}
       <section className="relative flex min-h-[50vh] items-end overflow-hidden sm:min-h-[55vh]">
         <ImagePlaceholder

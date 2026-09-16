@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Button } from "@/components/ui/Button";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { EXPERIENCES, getExperience } from "@/lib/experiences";
+import { buildFaqPageSchema } from "@/lib/schema";
 
 interface ExperienceDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -21,11 +23,11 @@ export async function generateMetadata({
   const experience = getExperience(slug);
 
   if (!experience) {
-    return { title: "Experiences | JW Marriott Mussoorie Walnut Grove Resort & Spa" };
+    return { title: "Experiences" };
   }
 
   return {
-    title: `${experience.name} | JW Marriott Mussoorie Walnut Grove Resort & Spa`,
+    title: experience.name,
     description: experience.directAnswer,
   };
 }
@@ -47,6 +49,7 @@ export default async function ExperienceDetailPage({
 
   return (
     <>
+      <JsonLd data={buildFaqPageSchema(experience.faqs)} />
       <section className="relative flex min-h-[55vh] items-end overflow-hidden sm:min-h-[60vh]">
         <ImagePlaceholder
           aspect="aspect-auto"

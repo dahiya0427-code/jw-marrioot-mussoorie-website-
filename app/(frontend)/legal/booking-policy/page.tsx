@@ -4,7 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { PROPERTY_PHONE_DISPLAY } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "Booking & Cancellation Policy | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Booking & Cancellation Policy",
   description: "Reservation, check-in/out, and cancellation terms for JW Marriott Mussoorie Walnut Grove Resort & Spa.",
 };
 

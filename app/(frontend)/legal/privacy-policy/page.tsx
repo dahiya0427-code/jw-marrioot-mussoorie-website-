@@ -4,7 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { PROPERTY_NAME, PROPERTY_PHONE_DISPLAY } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Privacy Policy",
   description: "How JW Marriott Mussoorie Walnut Grove Resort & Spa collects, uses, and protects your information.",
 };
 

@@ -4,7 +4,7 @@ import { BookingWizard } from "@/components/booking/BookingWizard";
 import { ACCOMMODATION_CATEGORIES } from "@/lib/accommodation";
 
 export const metadata: Metadata = {
-  title: "Book Your Stay | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Book Your Stay",
   description:
     "Reserve your room or suite at JW Marriott Mussoorie Walnut Grove Resort & Spa — a simple, secure booking flow with no account required.",
 };

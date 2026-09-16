@@ -7,7 +7,7 @@ import { BlogFilterGrid } from "@/components/blog/BlogFilterGrid";
 import { BLOG_POSTS } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog & travel guides | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Blog & travel guides",
   description:
     "Practical guides for planning a Mussoorie trip — things to do, how to get here, what Mindful Luxury means, and how to plan a mountain wedding at JW Marriott Mussoorie Walnut Grove Resort & Spa.",
 };

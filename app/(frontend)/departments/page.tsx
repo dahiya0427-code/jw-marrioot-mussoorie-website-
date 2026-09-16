@@ -5,7 +5,7 @@ import { ContentCard } from "@/components/ContentCard";
 import { DEPARTMENTS } from "@/lib/departments";
 
 export const metadata: Metadata = {
-  title: "Departments | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Departments",
   description:
     "A behind-the-scenes look at the teams behind JW Marriott Mussoorie Walnut Grove Resort & Spa — Front Office, Food & Beverage, Spa & Wellness, Housekeeping, and Sales & Events.",
 };

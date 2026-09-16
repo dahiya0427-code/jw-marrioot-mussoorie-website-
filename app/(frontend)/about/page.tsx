@@ -5,7 +5,7 @@ import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { MINDFUL_LUXURY_PILLARS, PROPERTY_STATS } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "About | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "About",
   description:
     "The story of JW Marriott Mussoorie Walnut Grove Resort & Spa — Mindful Luxury in the Garhwal Himalayan foothills.",
 };

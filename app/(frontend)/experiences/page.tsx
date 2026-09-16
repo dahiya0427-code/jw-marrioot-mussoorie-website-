@@ -5,7 +5,7 @@ import { ContentCard } from "@/components/ContentCard";
 import { EXPERIENCES, ON_PROPERTY_TEASER } from "@/lib/experiences";
 
 export const metadata: Metadata = {
-  title: "Experiences | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Experiences",
   description:
     "Plan your Mussoorie trip from JW Marriott Mussoorie Walnut Grove Resort & Spa — waterfalls, viewpoints, hiking trails, and cultural sites nearby, with distances and travel times from the resort.",
 };

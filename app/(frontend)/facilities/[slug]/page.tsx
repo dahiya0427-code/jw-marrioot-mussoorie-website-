@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Button } from "@/components/ui/Button";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { FACILITIES, getFacility } from "@/lib/facilities";
+import { buildFaqPageSchema } from "@/lib/schema";
 
 interface FacilityDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -21,11 +23,11 @@ export async function generateMetadata({
   const facility = getFacility(slug);
 
   if (!facility) {
-    return { title: "Facilities | JW Marriott Mussoorie Walnut Grove Resort & Spa" };
+    return { title: "Facilities" };
   }
 
   return {
-    title: `${facility.name} | JW Marriott Mussoorie Walnut Grove Resort & Spa`,
+    title: facility.name,
     description: facility.hook,
   };
 }
@@ -40,6 +42,7 @@ export default async function FacilityDetailPage({ params }: FacilityDetailPageP
 
   return (
     <>
+      <JsonLd data={buildFaqPageSchema(facility.faqs)} />
       <section className="relative flex min-h-[55vh] items-end overflow-hidden sm:min-h-[60vh]">
         <ImagePlaceholder
           aspect="aspect-auto"

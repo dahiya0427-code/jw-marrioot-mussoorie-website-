@@ -4,7 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 
 export const metadata: Metadata = {
-  title: "Gallery | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Gallery",
   description:
     "A visual tour of JW Marriott Mussoorie Walnut Grove Resort & Spa — rooms and suites, five dining venues, wedding spaces, the surrounding Garhwal hills, and Cedar Spa.",
 };

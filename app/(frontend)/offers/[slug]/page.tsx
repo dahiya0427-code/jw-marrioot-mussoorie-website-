@@ -20,11 +20,11 @@ export async function generateMetadata({
   const offer = getOffer(slug);
 
   if (!offer) {
-    return { title: "Offers | JW Marriott Mussoorie Walnut Grove Resort & Spa" };
+    return { title: "Offers" };
   }
 
   return {
-    title: `${offer.name} | JW Marriott Mussoorie Walnut Grove Resort & Spa`,
+    title: offer.name,
     description: offer.tagline,
   };
 }

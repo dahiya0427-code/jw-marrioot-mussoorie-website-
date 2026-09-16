@@ -5,7 +5,7 @@ import { ContentCard } from "@/components/ContentCard";
 import { FACILITIES } from "@/lib/facilities";
 
 export const metadata: Metadata = {
-  title: "Facilities | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Facilities",
   description:
     "From Cedar Spa by L'Occitane to a hilltop adventure area, explore the facilities at JW Marriott Mussoorie Walnut Grove Resort & Spa — spa, pool, fitness, family, and recreation, all set among the deodar and walnut groves.",
 };

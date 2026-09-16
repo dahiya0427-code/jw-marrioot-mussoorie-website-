@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { DINING_VENUES } from "@/lib/dining";
 
 export const metadata: Metadata = {
-  title: "Dining | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Dining",
   description:
     "Five restaurants, one philosophy: nourish the soul. Explore JW Cafe, Trout House Grill & Bar, Teppan, Wisteria Deck, and Perch at JW Marriott Mussoorie Walnut Grove Resort & Spa.",
 };

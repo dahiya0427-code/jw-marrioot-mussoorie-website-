@@ -4,7 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { PROPERTY_NAME } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Terms of Use",
   description: "Terms governing use of the JW Marriott Mussoorie Walnut Grove Resort & Spa website.",
 };
 

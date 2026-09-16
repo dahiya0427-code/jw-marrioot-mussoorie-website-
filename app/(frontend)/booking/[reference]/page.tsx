@@ -19,7 +19,7 @@ interface BookingStatusPageProps {
 
 export async function generateMetadata({ params }: BookingStatusPageProps): Promise<Metadata> {
   const { reference } = await params;
-  return { title: `Booking ${reference} | JW Marriott Mussoorie Walnut Grove Resort & Spa` };
+  return { title: `Booking ${reference}` };
 }
 
 const STATUS_LABEL: Record<BookingDoc["status"], string> = {

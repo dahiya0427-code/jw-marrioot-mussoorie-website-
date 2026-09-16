@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Cookie Policy",
   description: "How JW Marriott Mussoorie Walnut Grove Resort & Spa uses cookies on this website.",
 };
 

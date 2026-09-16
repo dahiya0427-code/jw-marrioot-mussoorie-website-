@@ -3,10 +3,12 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { EventEnquiryForm } from "@/components/EventEnquiryForm";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { EVENT_VENUES, EVENTS_STATS } from "@/lib/events";
+import { buildEventVenuesSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Weddings & Events | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Weddings & Events",
   description:
     "Wedding by the Hills — one of the largest event infrastructures among luxury resorts in Uttarakhand, with capacity for up to 1,000 guests across the Grand Orchard Ballroom, Indoor Banquet Hall, and Outdoor Lawn.",
 };
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
 export default function EventsPage() {
   return (
     <>
+      <JsonLd data={buildEventVenuesSchema()} />
       <PageHero
         eyebrow="Wedding by the Hills"
         title="A wedding, or a gathering, that feels like it belongs to the mountains"

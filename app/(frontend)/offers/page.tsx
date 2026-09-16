@@ -6,7 +6,7 @@ import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { OFFERS } from "@/lib/offers";
 
 export const metadata: Metadata = {
-  title: "Offers & packages | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Offers & packages",
   description:
     "Package concepts for a stay at JW Marriott Mussoorie Walnut Grove Resort & Spa — romantic getaways, family weekends, and wellness resets, with clear inclusions and current rates on request.",
 };

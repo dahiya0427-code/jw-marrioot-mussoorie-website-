@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Button } from "@/components/ui/Button";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { RoomCard } from "@/components/accommodation/RoomCard";
 import { AmenitiesList } from "@/components/accommodation/AmenitiesList";
 import {
@@ -13,6 +14,7 @@ import {
   BASE_ROOM_AMENITIES,
   getAccommodationCategory,
 } from "@/lib/accommodation";
+import { buildFaqPageSchema, buildHotelRoomSchema } from "@/lib/schema";
 
 interface AccommodationDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -29,11 +31,11 @@ export async function generateMetadata({
   const category = getAccommodationCategory(slug);
 
   if (!category) {
-    return { title: "Accommodation | JW Marriott Mussoorie Walnut Grove Resort & Spa" };
+    return { title: "Accommodation" };
   }
 
   return {
-    title: `${category.name} | JW Marriott Mussoorie Walnut Grove Resort & Spa`,
+    title: category.name,
     description: category.tagline,
   };
 }
@@ -56,6 +58,8 @@ export default async function AccommodationDetailPage({
 
   return (
     <>
+      <JsonLd data={buildHotelRoomSchema(category, amenities)} />
+      <JsonLd data={buildFaqPageSchema(ACCOMMODATION_FAQS)} />
       <PageHero
         eyebrow={category.viewType}
         title={category.name}

@@ -8,7 +8,7 @@ import { ACCOMMODATION_CATEGORIES, BASE_ROOM_AMENITIES } from "@/lib/accommodati
 import { PROPERTY_STATS } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "Accommodation | JW Marriott Mussoorie Walnut Grove Resort & Spa",
+  title: "Accommodation",
   description:
     "Explore rooms and suites at JW Marriott Mussoorie Walnut Grove Resort & Spa — 115 keys set among deodar and walnut groves in the Garhwal Himalayan foothills.",
 };
