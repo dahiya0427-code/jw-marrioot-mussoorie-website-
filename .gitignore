@@ -49,3 +49,4 @@ next-env.d.ts
 
 # Local dev-tooling config (machine-specific paths)
 .claude/
+run-dev.cmd
