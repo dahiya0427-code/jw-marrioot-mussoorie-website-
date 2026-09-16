@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/*
+ * JW Marriott Mussoorie Walnut Grove Resort & Spa — brand design tokens.
+ * Defined via Tailwind v4's CSS-first @theme so they double as both plain
+ * CSS custom properties (usable anywhere) and Tailwind utility classes,
+ * e.g. `bg-walnut-brown`, `text-champagne-gold`, `border-hairline`.
+ */
+@theme {
+  --color-walnut-brown: #3b2a20;
+  --color-deep-forest: #1f2e22;
+  --color-champagne-gold: #c6a15b;
+  --color-ivory-mist: #f7f3ec;
+  --color-warm-sand: #ede4d3;
+  --color-charcoal-ink: #2a2622;
+  --color-soft-grey: #8c8478;
+  --color-hairline: #ddd3c2;
+  --color-confirmation-green: #4c6b4f;
+  --color-alert-rust: #a6493a;
+  --color-info-slate: #5c6e73;
+
+  /* next/font/google sets --font-fraunces / --font-inter on <html> (see layout.tsx) */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--color-ivory-mist);
+  color: var(--color-charcoal-ink);
+  font-family: var(--font-sans);
+}
+
+/*
+ * Brand system: buttons default to pill-shaped (fully rounded).
+ * Reusable component class for anywhere a raw <button>/<a> is used
+ * without reaching for the <Button> component.
+ */
+@layer components {
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 150ms ease, color 150ms ease, opacity 150ms ease;
+  }
+}
