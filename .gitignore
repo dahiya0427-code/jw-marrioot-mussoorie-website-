@@ -46,3 +46,6 @@ next-env.d.ts
 
 # payload
 /media
+
+# Local dev-tooling config (machine-specific paths)
+.claude/
