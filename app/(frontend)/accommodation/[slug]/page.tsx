@@ -114,7 +114,7 @@ export default async function AccommodationDetailPage({
         </div>
 
         <div className="mt-8">
-          <Button href="/contact" variant="primary">
+          <Button href={`/book?room=${category.slug}`} variant="primary">
             Check availability
           </Button>
         </div>

@@ -11,8 +11,8 @@ export interface RoomCardProps {
  * Accommodation-specific card: image placeholder, name, one-line
  * description, a handful of amenity highlights, and two calls to action —
  * a plain "View details" link to the detail page, and a "Check
- * availability" button that (until a live booking engine exists) routes to
- * /contact. Kept separate from the generic <ContentCard> because this
+ * availability" button that opens the /book flow with this room
+ * pre-selected. Kept separate from the generic <ContentCard> because this
  * listing needs two CTAs per card rather than one.
  */
 export function RoomCard({ category }: RoomCardProps) {
@@ -58,7 +58,7 @@ export function RoomCard({ category }: RoomCardProps) {
           >
             View details &rarr;
           </Link>
-          <Button href="/contact" variant="outline" className="text-sm">
+          <Button href={`/book?room=${category.slug}`} variant="outline" className="text-sm">
             Check availability
           </Button>
         </div>

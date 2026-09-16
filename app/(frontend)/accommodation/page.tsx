@@ -68,12 +68,12 @@ export default function AccommodationPage() {
           Ready to plan your stay?
         </h2>
         <p className="mt-3 font-sans text-base text-charcoal-ink/80">
-          Our booking engine is on its way. In the meantime, reach out and our
-          team will help you check availability and find the right room.
+          Book directly with us in a few simple steps — no account required —
+          or reach out and our team will help you find the right room.
         </p>
         <div className="mt-6 flex justify-center">
-          <Button href="/contact" variant="primary">
-            Check availability
+          <Button href="/book" variant="primary">
+            Book now
           </Button>
         </div>
       </section>

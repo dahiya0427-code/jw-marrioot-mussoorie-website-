@@ -19,6 +19,17 @@ export const Bookings: CollectionConfig = {
   },
   fields: [
     {
+      name: "reference",
+      type: "text",
+      required: true,
+      unique: true,
+      index: true,
+      admin: {
+        readOnly: true,
+        description: "Guest-facing booking reference (e.g. JWM-XXXXXXX) — doubles as the token for /booking/[reference].",
+      },
+    },
+    {
       name: "guestName",
       type: "text",
       required: true,
@@ -36,14 +47,81 @@ export const Bookings: CollectionConfig = {
       name: "roomType",
       type: "relationship",
       relationTo: "room-types",
+      admin: {
+        description: "Optional link to a CMS-managed RoomTypes document, once the catalog is migrated there.",
+      },
+    },
+    {
+      name: "roomTypeSlug",
+      type: "text",
+      required: true,
+      admin: {
+        description:
+          'Accommodation category slug from lib/accommodation.ts (e.g. "luxury-suite") — the source of truth for the booking engine until room types are fully CMS-managed.',
+      },
     },
     {
       name: "checkIn",
       type: "date",
+      required: true,
     },
     {
       name: "checkOut",
       type: "date",
+      required: true,
+    },
+    {
+      name: "adults",
+      type: "number",
+      defaultValue: 2,
+      min: 1,
+    },
+    {
+      name: "children",
+      type: "number",
+      defaultValue: 0,
+      min: 0,
+    },
+    {
+      name: "addOns",
+      type: "array",
+      fields: [
+        { name: "label", type: "text", required: true },
+        { name: "priceInInr", type: "number", required: true },
+      ],
+    },
+    {
+      name: "amountInInr",
+      type: "number",
+      required: true,
+      admin: {
+        description:
+          "Total charge amount in INR, computed server-side from the indicative nightly rate (lib/booking.ts) plus add-ons. NOT a live PMS rate — see lib/booking.ts.",
+      },
+    },
+    {
+      name: "currency",
+      type: "text",
+      defaultValue: "INR",
+    },
+    {
+      name: "paymentGateway",
+      type: "select",
+      defaultValue: "razorpay",
+      options: [
+        { label: "Razorpay", value: "razorpay" },
+        { label: "Stripe", value: "stripe" },
+      ],
+    },
+    {
+      name: "razorpayOrderId",
+      type: "text",
+      admin: { readOnly: true },
+    },
+    {
+      name: "razorpayPaymentId",
+      type: "text",
+      admin: { readOnly: true },
     },
     {
       name: "status",

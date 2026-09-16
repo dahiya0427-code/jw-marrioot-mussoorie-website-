@@ -78,7 +78,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button href="/accommodation" variant="primary" className="hidden sm:inline-flex">
+          <Button href="/book" variant="primary" className="hidden sm:inline-flex">
             Book Now
           </Button>
 
@@ -140,7 +140,7 @@ export function Header() {
           </nav>
 
           <div className="border-t border-hairline px-5 py-5">
-            <Button href="/accommodation" variant="primary" className="w-full">
+            <Button href="/book" variant="primary" className="w-full">
               Book Now
             </Button>
           </div>
