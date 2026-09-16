@@ -12,7 +12,7 @@ export default function Home() {
         eyebrow="JW Marriott Mussoorie Walnut Grove Resort & Spa"
         title="Find your stillness in the Garhwal hills"
         subhead="115 keys set among deodar and walnut groves in the foothills of the Garhwal Himalayan range, roughly two hours from Dehradun."
-        cta={{ label: "Book Now", href: "/accommodation" }}
+        cta={{ label: "Book Now", href: "/book" }}
       />
 
       {/* Mindful Luxury pillars */}

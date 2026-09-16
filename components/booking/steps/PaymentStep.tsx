@@ -35,10 +35,16 @@ export function PaymentStep({ state, onBookingCreated, onConfirmed, onUnconfigur
   const hasRequestedRef = useRef(Boolean(state.bookingId));
 
   useEffect(() => {
+    // Guard with a ref rather than an effect-cleanup "cancelled" flag: in
+    // React Strict Mode (dev), this effect fires, cleans up, and fires again
+    // on mount. A closure-scoped `cancelled` flag set by that first cleanup
+    // would silently discard the in-flight fetch's result even though the
+    // component is still mounted for real — leaving the UI stuck on
+    // "Preparing your reservation…" forever. The ref persists across that
+    // double-invoke, so only the flag matters: the first (real) fetch is
+    // left to resolve and apply its result normally.
     if (hasRequestedRef.current) return;
     hasRequestedRef.current = true;
-
-    let cancelled = false;
 
     async function createBooking() {
       try {
@@ -55,13 +61,12 @@ export function PaymentStep({ state, onBookingCreated, onConfirmed, onUnconfigur
             guest: state.guest,
           }),
         });
-        const data = await res.json();
-        if (cancelled) return;
+        const data = await res.json().catch(() => ({}) as Record<string, unknown>);
 
         if (res.status === 503) {
           onBookingCreated({
-            bookingId: data.bookingId,
-            reference: data.reference,
+            bookingId: data.bookingId as string,
+            reference: data.reference as string,
             razorpayOrder: null,
             razorpayKeyId: null,
           });
@@ -70,29 +75,27 @@ export function PaymentStep({ state, onBookingCreated, onConfirmed, onUnconfigur
         }
 
         if (!res.ok) {
-          setErrorMessage(data.error ?? "Something went wrong while creating your reservation. Please try again.");
+          setErrorMessage(
+            (data.error as string) ?? "Something went wrong while creating your reservation. Please try again.",
+          );
           setPhase("error");
           return;
         }
 
         onBookingCreated({
-          bookingId: data.bookingId,
-          reference: data.reference,
-          razorpayOrder: data.razorpayOrder,
-          razorpayKeyId: data.razorpayKeyId,
+          bookingId: data.bookingId as string,
+          reference: data.reference as string,
+          razorpayOrder: data.razorpayOrder as BookingCreatedPayload["razorpayOrder"],
+          razorpayKeyId: data.razorpayKeyId as string | null,
         });
         setPhase("ready");
       } catch {
-        if (cancelled) return;
         setErrorMessage("We couldn't reach the server. Please check your connection and try again.");
         setPhase("error");
       }
     }
 
     createBooking();
-    return () => {
-      cancelled = true;
-    };
     // Runs once on step entry — the effect intentionally does not re-run as
     // wizard state changes underneath it.
     // eslint-disable-next-line react-hooks/exhaustive-deps
