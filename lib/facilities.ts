@@ -71,7 +71,7 @@ export const FACILITIES: Facility[] = [
           "We recommend booking at least 24 hours ahead, and earlier during weekends and holiday periods. Our team can also help you plan a full spa itinerary alongside the rest of your stay.",
       },
     ],
-    cta: { label: "Book a consultation", href: "/contact" },
+    cta: { label: "Book a consultation", href: "/contact?type=spa" },
   },
   {
     slug: "indoor-pool",

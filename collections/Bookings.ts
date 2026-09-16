@@ -5,8 +5,20 @@ import { isStaff } from "./access/isStaff";
 export const Bookings: CollectionConfig = {
   slug: "bookings",
   admin: {
-    useAsTitle: "guestName",
-    defaultColumns: ["guestName", "status", "checkIn", "checkOut", "updatedAt"],
+    useAsTitle: "reference",
+    group: "Guest Requests",
+    // Staff queue view (PRD §4.4): reference first (it's the guest-facing
+    // token and doubles as search anchor), then who/what/when/how much/status
+    // — the columns a reservations desk actually triages by.
+    defaultColumns: [
+      "reference",
+      "guestName",
+      "roomTypeSlug",
+      "checkIn",
+      "checkOut",
+      "amountInInr",
+      "status",
+    ],
   },
   access: {
     // Guests submit bookings through a public API route (added in a later

@@ -16,7 +16,22 @@ export const metadata: Metadata = {
     "Get in touch with JW Marriott Mussoorie Walnut Grove Resort & Spa — address, phone, and enquiry form.",
 };
 
-export default function ContactPage() {
+interface ContactPageProps {
+  searchParams: Promise<{ type?: string }>;
+}
+
+// The Cedar Spa facility page's "Book a consultation" CTA links here with
+// ?type=spa so the shared enquiry form (which already covers all PRD §4.5
+// enquiry types via its "Enquiry type" selector) preselects Spa & wellness
+// instead of guests having to pick it themselves.
+const DEFAULT_SUBJECT_BY_TYPE: Record<string, string> = {
+  spa: "Spa & wellness",
+};
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const { type } = await searchParams;
+  const defaultSubject = type ? DEFAULT_SUBJECT_BY_TYPE[type] : undefined;
+
   return (
     <>
       <PageHero
@@ -30,7 +45,7 @@ export default function ContactPage() {
           <div>
             <h2 className="font-display text-2xl text-walnut-brown">Send an enquiry</h2>
             <div className="mt-6">
-              <ContactForm />
+              <ContactForm defaultSubject={defaultSubject} />
             </div>
           </div>
 

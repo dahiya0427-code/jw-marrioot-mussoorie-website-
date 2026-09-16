@@ -2,18 +2,52 @@
 
 import { useState, type FormEvent } from "react";
 
-// TODO: wire up to a real submission endpoint (e.g. Payload EventEnquiries
-// collection) once DATABASE_URI is live. For now this only shows a
-// confirmation state — no data is sent anywhere.
 export function EventEnquiryForm() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "submitted" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsSubmitted(true);
+    setStatus("submitting");
+    setErrorMessage(null);
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("/api/consultations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("fullName"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          message: data.get("details"),
+          enquiryType: "weddings-events",
+          eventType: data.get("eventType"),
+          preferredDate: data.get("eventDate") || undefined,
+          guestCount: data.get("guestCount") || undefined,
+          source: "events",
+        }),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setErrorMessage(result?.error || "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("submitted");
+    } catch (err) {
+      console.error("[EventEnquiryForm] submission failed", err);
+      setErrorMessage("We couldn't send your enquiry. Please check your connection and try again.");
+      setStatus("error");
+    }
   }
 
-  if (isSubmitted) {
+  if (status === "submitted") {
     return (
       <div
         role="status"
@@ -123,8 +157,18 @@ export function EventEnquiryForm() {
         />
       </div>
 
-      <button type="submit" className="btn-pill bg-champagne-gold text-walnut-brown hover:opacity-90">
-        Start planning
+      {status === "error" && errorMessage ? (
+        <p role="alert" className="font-sans text-sm text-alert-rust">
+          {errorMessage}
+        </p>
+      ) : null}
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="btn-pill bg-champagne-gold text-walnut-brown hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {status === "submitting" ? "Sending…" : "Start planning"}
       </button>
     </form>
   );
