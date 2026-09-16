@@ -1,4 +1,5 @@
-import type { ButtonHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import Link from "next/link";
 
 type Variant = "primary" | "secondary" | "outline";
 
@@ -11,23 +12,43 @@ const variantClasses: Record<Variant, string> = {
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
+  href?: undefined;
+}
+
+export interface LinkButtonProps
+  extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  variant?: Variant;
+  href: string;
 }
 
 /**
  * Brand-system button. Pill-shaped (fully rounded) by default per the
- * JW Marriott Mussoorie design system. Deeper variants/sizes can be added
- * as later pages need them — this is intentionally minimal for the
- * scaffolding phase.
+ * JW Marriott Mussoorie design system. Pass `href` to render as a
+ * (Next.js) link styled identically, for CTAs that navigate rather than
+ * submit — e.g. the header's "Book Now" pill.
  */
 export function Button({
   variant = "primary",
   className = "",
+  href,
   ...props
-}: ButtonProps) {
+}: ButtonProps | LinkButtonProps) {
+  const classes = `btn-pill ${variantClasses[variant]} ${className}`.trim();
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={classes}
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+      />
+    );
+  }
+
   return (
     <button
-      className={`btn-pill ${variantClasses[variant]} ${className}`.trim()}
-      {...props}
+      className={classes}
+      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
     />
   );
 }
