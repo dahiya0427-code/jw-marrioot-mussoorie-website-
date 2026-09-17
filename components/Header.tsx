@@ -57,7 +57,8 @@ export function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-hairline bg-ivory-mist/95 backdrop-blur">
+    <>
+      <header className="sticky top-0 z-50 border-b border-hairline bg-ivory-mist/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Wordmark />
 
@@ -95,8 +96,16 @@ export function Header() {
           </button>
         </div>
       </div>
+      </header>
 
-      {/* Mobile / tablet slide-out drawer */}
+      {/*
+        Mobile / tablet slide-out drawer — deliberately a SIBLING of
+        <header>, not a descendant. The header has `backdrop-blur`
+        (backdrop-filter), which per spec makes it the containing block
+        for any `position: fixed` descendant. Nesting this fixed overlay
+        inside the header collapsed it to the header's own ~65px height
+        instead of the full viewport. Keeping it outside avoids that.
+      */}
       <div
         className={`fixed inset-0 z-50 xl:hidden ${isMenuOpen ? "" : "pointer-events-none"}`}
         aria-hidden={!isMenuOpen}
@@ -146,6 +155,6 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }
