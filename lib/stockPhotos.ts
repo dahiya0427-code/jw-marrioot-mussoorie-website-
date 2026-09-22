@@ -39,4 +39,11 @@ export const STOCK_PHOTOS = {
   weddingBallroom: unsplash("1776671069226-24e6d422a61b"),
   weddingOutdoorLawn: unsplash("1785744530706-71fd26baac6a"),
   weddingBanquetHall: unsplash("1744891471118-f74c0453cd21"),
+
+  facilityFitnessCentre: unsplash("1662386392805-573808794a21"),
+  facilityKidsClub: unsplash("1630139026569-0cdfbd9cee4e"),
+  facilityBowlingAlley: unsplash("1612244314937-c704fd3b2810"),
+  facilityAmphitheatre: unsplash("1770877770609-90c0d3890644"),
+  facilityPuttingGreen: unsplash("1592937238247-cd0090e02f65"),
+  facilityTrekking: unsplash("1621531518034-94ecf4778186"),
 } as const;

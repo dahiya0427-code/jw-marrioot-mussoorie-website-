@@ -113,6 +113,7 @@ export const FACILITIES: Facility[] = [
     tag: "Wellness",
     hook: "Cardio, free weights, and strength machines, open around the clock.",
     imageVariant: "walnut",
+    imageSrc: STOCK_PHOTOS.facilityFitnessCentre,
     description: [
       "The fitness centre is open 24 hours a day, built for guests whose routine doesn't pause for a holiday — an early climb before breakfast, a late session after a long day of meetings, or anything in between.",
       "The equipment spans cardio machines, free weights, and strength training stations, enough to hold a complete workout without needing to plan around anyone else's schedule.",
@@ -142,6 +143,7 @@ export const FACILITIES: Facility[] = [
     tag: "Family",
     hook: "A 12,000 sq. ft. world of its own, plus a dedicated playground outside.",
     imageVariant: "gold",
+    imageSrc: STOCK_PHOTOS.facilityKidsClub,
     description: [
       "Spread across 12,000 sq. ft., the resort's kids' club gives younger guests a space that is entirely theirs — built for play, discovery, and making friends over the course of a stay. A dedicated playground just outside extends that world into the open air.",
       "Whether it's an hour while parents visit Cedar Spa or a full afternoon of activities, the kids' club is designed to make a family holiday feel like a holiday for everyone in it.",
@@ -171,6 +173,7 @@ export const FACILITIES: Facility[] = [
     tag: "Recreation",
     hook: "A round of bowling, any time the mood — or the mountain weather — calls for it.",
     imageVariant: "walnut",
+    imageSrc: STOCK_PHOTOS.facilityBowlingAlley,
     description: [
       "The resort's on-site bowling alley is an easy, indoor way to fill an evening — a casual game between dinner and dessert, or a proper family tournament if the group is competitive enough.",
       "It sits alongside the amphitheatre and other indoor recreation spaces, making it simple to string together a full evening of activity without stepping outside.",
@@ -195,6 +198,7 @@ export const FACILITIES: Facility[] = [
     tag: "Recreation",
     hook: "Cultural shows and karaoke nights, staged under the mountain sky.",
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.facilityAmphitheatre,
     description: [
       "The resort's amphitheatre hosts cultural shows and karaoke nights, giving guests a reason to gather as the evening cools — whether as an audience for a performance or on stage for a song.",
       "The programme varies through the week and season, and it's one of the easiest places at the resort to turn a quiet evening into a shared one.",
@@ -219,6 +223,7 @@ export const FACILITIES: Facility[] = [
     tag: "Recreation",
     hook: "A quiet green for a relaxed round, framed by the Garhwal hills.",
     imageVariant: "sand",
+    imageSrc: STOCK_PHOTOS.facilityPuttingGreen,
     description: [
       "The resort's putting green offers a relaxed round for guests looking to keep a golf habit going, or to try it for the first time in pleasant surroundings, with the Garhwal foothills as a backdrop.",
       "It's a low-key complement to the resort's more active pursuits — easy to fit in before breakfast or as a wind-down before dinner.",
@@ -243,6 +248,7 @@ export const FACILITIES: Facility[] = [
     tag: "Outdoors",
     hook: "A hilltop outdoor adventure area and marked trails into the forest beyond.",
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.facilityTrekking,
     description: [
       "A dedicated hilltop outdoor adventure area gives guests a base for activity in the open air, set against the deodar and walnut groves that surround the resort.",
       "From there, marked trekking trails lead into the surrounding forest, ranging from a short walk to a longer outing for guests who want to properly explore the Garhwal foothills on foot.",
