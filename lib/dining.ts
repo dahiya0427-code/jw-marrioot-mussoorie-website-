@@ -8,6 +8,7 @@
  * launch — they are presentational only and carry no pricing.
  */
 import type { ImagePlaceholderProps } from "@/components/ui/ImagePlaceholder";
+import { STOCK_PHOTOS } from "@/lib/stockPhotos";
 
 export interface DiningDish {
   name: string;
@@ -28,6 +29,8 @@ export interface DiningVenue {
   hours: string;
   dressCode: string;
   imageVariant: NonNullable<ImagePlaceholderProps["variant"]>;
+  /** Generic (non-property-specific) stock photo used until real photography exists. */
+  imageSrc?: string;
   /** Short editorial pull-quote for the detail page's story band. */
   pullQuote: string;
   /** Long-form description paragraphs for the detail page. */
@@ -45,6 +48,7 @@ export const DINING_VENUES: DiningVenue[] = [
     hours: "Daily, 7:00 am – 11:00 pm",
     dressCode: "Casual",
     imageVariant: "sand",
+    imageSrc: STOCK_PHOTOS.diningJwCafe,
     pullQuote:
       "The kitchen is never behind a wall here — you watch the day's dishes come together, one station at a time.",
     description: [
@@ -95,6 +99,7 @@ export const DINING_VENUES: DiningVenue[] = [
     hours: "Daily, 5:00 pm – 11:00 pm",
     dressCode: "Casual",
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.diningTroutHouse,
     pullQuote:
       "The trout comes from cold mountain streams, the produce from nearby farms — this is Indian food that tastes like where it's cooked.",
     description: [
@@ -145,6 +150,7 @@ export const DINING_VENUES: DiningVenue[] = [
     hours: "Tuesday – Sunday, 7:00 pm – 11:00 pm (closed Monday)",
     dressCode: "Casual",
     imageVariant: "walnut",
+    imageSrc: STOCK_PHOTOS.diningTeppan,
     pullQuote:
       "Dinner as a small performance — the grill sizzling an arm's length away, each dish plated the moment it's ready.",
     description: [
@@ -195,6 +201,7 @@ export const DINING_VENUES: DiningVenue[] = [
     hours: "Daily, 12:00 pm – 5:00 pm",
     dressCode: "Casual",
     imageVariant: "gold",
+    imageSrc: STOCK_PHOTOS.diningWisteriaDeck,
     pullQuote:
       "Olive oil, char, and citrus — Mediterranean cooking that borrows its vegetables and herbs from the hills right outside.",
     description: [
@@ -245,6 +252,7 @@ export const DINING_VENUES: DiningVenue[] = [
     hours: "Daily, 11:00 am – 8:00 pm",
     dressCode: "Casual",
     imageVariant: "sand",
+    imageSrc: STOCK_PHOTOS.diningPerch,
     pullQuote:
       "Come for the view, stay for the tea flight — Perch is built for the hour when nothing needs to happen quickly.",
     description: [

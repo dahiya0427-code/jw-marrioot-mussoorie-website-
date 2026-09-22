@@ -14,6 +14,9 @@ import { ACCOMMODATION_CATEGORIES } from "@/lib/accommodation";
 export interface BookingWizardProps {
   /** Pre-selected room slug from ?room=<slug> on /book, already validated server-side. */
   initialRoomSlug?: string;
+  /** Pre-filled dates from ?checkIn=&checkOut= on /book, already validated server-side. */
+  initialCheckIn?: string;
+  initialCheckOut?: string;
 }
 
 type Action =
@@ -38,17 +41,25 @@ function defaultDateOffset(days: number): string {
   return date.toISOString().slice(0, 10);
 }
 
-function buildInitialState(initialRoomSlug?: string): WizardReducerState {
+function buildInitialState({
+  initialRoomSlug,
+  initialCheckIn,
+  initialCheckOut,
+}: BookingWizardProps): WizardReducerState {
   const roomSlug =
     initialRoomSlug && ACCOMMODATION_CATEGORIES.some((c) => c.slug === initialRoomSlug)
       ? initialRoomSlug
       : ACCOMMODATION_CATEGORIES[0].slug;
 
+  const datesValid = Boolean(
+    initialCheckIn && initialCheckOut && initialCheckIn < initialCheckOut,
+  );
+
   return {
     step: 1,
     roomSlug,
-    checkIn: defaultDateOffset(7),
-    checkOut: defaultDateOffset(8),
+    checkIn: datesValid ? initialCheckIn! : defaultDateOffset(7),
+    checkOut: datesValid ? initialCheckOut! : defaultDateOffset(8),
     adults: 2,
     children: 0,
     addOnIds: [],
@@ -98,8 +109,8 @@ function reducer(state: WizardReducerState, action: Action): WizardReducerState 
   }
 }
 
-export function BookingWizard({ initialRoomSlug }: BookingWizardProps) {
-  const [state, dispatch] = useReducer(reducer, initialRoomSlug, buildInitialState);
+export function BookingWizard(props: BookingWizardProps) {
+  const [state, dispatch] = useReducer(reducer, props, buildInitialState);
 
   if (state.phase === "confirmation") {
     return (

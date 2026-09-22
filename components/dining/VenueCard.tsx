@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { UtensilsIcon } from "@/components/ui/icons";
 import type { DiningVenue } from "@/lib/dining";
 
 export interface VenueCardProps {
@@ -29,7 +30,10 @@ export function VenueCard({ venue, reverse = false }: VenueCardProps) {
           aspect="aspect-[4/3]"
           variant={venue.imageVariant}
           label={`${venue.name} — photography pending`}
-          className="transition-transform duration-300 group-hover:scale-[1.02]"
+          icon={<UtensilsIcon className="h-full w-full" strokeWidth={1} />}
+          src={venue.imageSrc}
+          alt={`${venue.name} — illustrative photo`}
+          className="transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </Link>
 

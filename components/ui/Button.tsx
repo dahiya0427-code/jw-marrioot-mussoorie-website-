@@ -1,13 +1,16 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import Link from "next/link";
 
-type Variant = "primary" | "secondary" | "outline";
+type Variant = "primary" | "secondary" | "outline" | "outline-inverse";
 
 const variantClasses: Record<Variant, string> = {
   primary: "bg-champagne-gold text-walnut-brown hover:opacity-90",
   secondary: "bg-walnut-brown text-ivory-mist hover:opacity-90",
   outline:
     "bg-transparent text-walnut-brown border border-walnut-brown hover:bg-warm-sand",
+  /** For use on dark/image backgrounds — a light outline instead of walnut-brown. */
+  "outline-inverse":
+    "bg-transparent text-ivory-mist border border-ivory-mist/40 hover:bg-ivory-mist/10",
 };
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

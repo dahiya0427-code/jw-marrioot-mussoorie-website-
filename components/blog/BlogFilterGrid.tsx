@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Reveal } from "@/components/Reveal";
 import {
   BLOG_CATEGORIES,
   BLOG_POSTS,
@@ -56,32 +57,36 @@ export function BlogFilterGrid({ posts = BLOG_POSTS }: { posts?: BlogPost[] }) {
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredPosts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-shadow hover:shadow-lg"
-          >
-            <ImagePlaceholder
-              aspect="aspect-[4/3]"
-              variant={post.imageVariant}
-              label={`${post.title} — photography pending`}
-            />
-            <div className="flex flex-1 flex-col gap-2 p-5">
-              <p className="font-sans text-xs tracking-[0.15em] text-champagne-gold uppercase">
-                {post.category}
-              </p>
-              <h3 className="font-display text-xl text-walnut-brown">
-                {post.title}
-              </h3>
-              <p className="font-sans text-sm text-charcoal-ink/80">
-                {post.excerpt}
-              </p>
-              <span className="mt-auto pt-2 font-sans text-xs text-charcoal-ink/60">
-                {post.readTimeMinutes} min read
-              </span>
-            </div>
-          </Link>
+        {filteredPosts.map((post, index) => (
+          <Reveal key={post.slug} delayMs={(index % 3) * 100} direction={index % 2 === 0 ? "up" : "zoom"}>
+            <Link
+              href={`/blog/${post.slug}`}
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-shadow hover:shadow-lg"
+            >
+              <ImagePlaceholder
+                aspect="aspect-[4/3]"
+                variant={post.imageVariant}
+                label={`${post.title} — photography pending`}
+                src={post.imageSrc}
+                alt={`${post.title} — illustrative photo`}
+                className="transition-transform duration-500 ease-out group-hover:scale-105"
+              />
+              <div className="flex flex-1 flex-col gap-2 p-5">
+                <p className="font-sans text-xs tracking-[0.15em] text-champagne-gold uppercase">
+                  {post.category}
+                </p>
+                <h3 className="font-display text-xl text-walnut-brown">
+                  {post.title}
+                </h3>
+                <p className="font-sans text-sm text-charcoal-ink/80">
+                  {post.excerpt}
+                </p>
+                <span className="mt-auto pt-2 font-sans text-xs text-charcoal-ink/60">
+                  {post.readTimeMinutes} min read
+                </span>
+              </div>
+            </Link>
+          </Reveal>
         ))}
       </div>
 

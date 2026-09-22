@@ -44,13 +44,17 @@ export default async function FacilityDetailPage({ params }: FacilityDetailPageP
     <>
       <JsonLd data={buildFaqPageSchema(facility.faqs)} />
       <section className="relative flex min-h-[55vh] items-end overflow-hidden sm:min-h-[60vh]">
-        <ImagePlaceholder
-          aspect="aspect-auto"
-          variant={facility.imageVariant}
-          label={`${facility.name} — photography pending`}
-          className="absolute inset-0 h-full w-full"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-ink/70 via-charcoal-ink/20 to-transparent" />
+        <div className="absolute inset-0">
+          <ImagePlaceholder
+            aspect="aspect-auto"
+            variant={facility.imageVariant}
+            label={`${facility.name} — photography pending`}
+            src={facility.imageSrc}
+            alt={`${facility.name} — illustrative photo`}
+            className="h-full w-full"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-ink/75 via-charcoal-ink/25 to-transparent" />
         <div className="relative mx-auto w-full max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
           <p className="font-sans text-xs tracking-[0.2em] text-champagne-gold uppercase">
             {facility.tag}

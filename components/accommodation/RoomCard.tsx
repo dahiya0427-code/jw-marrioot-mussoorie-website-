@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { BedIcon } from "@/components/ui/icons";
 import type { AccommodationCategory } from "@/lib/accommodation";
+import { formatInr, getIndicativeNightlyRate } from "@/lib/booking";
 
 export interface RoomCardProps {
   category: AccommodationCategory;
@@ -16,14 +18,26 @@ export interface RoomCardProps {
  * listing needs two CTAs per card rather than one.
  */
 export function RoomCard({ category }: RoomCardProps) {
+  const nightlyRate = getIndicativeNightlyRate(category.slug);
+
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-shadow hover:shadow-lg">
-      <Link href={`/accommodation/${category.slug}`} className="block">
-        <ImagePlaceholder
-          aspect="aspect-[4/3]"
-          variant={category.imageVariant}
-          label={`${category.name} — photography pending`}
-        />
+    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <Link href={`/accommodation/${category.slug}`} className="relative block overflow-hidden">
+        <div className="transition-transform duration-500 ease-out group-hover:scale-105">
+          <ImagePlaceholder
+            aspect="aspect-[4/3]"
+            variant={category.imageVariant}
+            label={`${category.name} — photography pending`}
+            icon={<BedIcon className="h-full w-full" strokeWidth={1} />}
+            src={category.imageSrc}
+            alt={`${category.name} — illustrative photo`}
+          />
+        </div>
+        {nightlyRate ? (
+          <span className="absolute top-3 right-3 rounded-full bg-ivory-mist/95 px-3 py-1.5 font-sans text-xs font-semibold text-walnut-brown shadow-ambient">
+            {formatInr(nightlyRate)} / night*
+          </span>
+        ) : null}
       </Link>
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div>
@@ -62,6 +76,9 @@ export function RoomCard({ category }: RoomCardProps) {
             Check availability
           </Button>
         </div>
+        {nightlyRate ? (
+          <p className="font-sans text-[0.65rem] text-soft-grey">*Indicative rate, for illustration only.</p>
+        ) : null}
       </div>
     </div>
   );

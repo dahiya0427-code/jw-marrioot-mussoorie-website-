@@ -65,6 +65,7 @@ export default async function AccommodationDetailPage({
         title={category.name}
         subhead={category.tagline}
         imageLabel={`${category.name} — photography pending`}
+        imageSrc={category.imageSrc}
       />
 
       {/* Gallery */}
@@ -126,7 +127,7 @@ export default async function AccommodationDetailPage({
 
       {/* Amenities */}
       <section className="bg-warm-sand py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <p className="text-center font-sans text-xs tracking-[0.2em] text-champagne-gold uppercase">
             In this room
           </p>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Reveal } from "@/components/Reveal";
 import {
   PROPERTY_ADDRESS_LINES,
   PROPERTY_NAME,
@@ -42,14 +43,14 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div>
+          <Reveal direction="left">
             <h2 className="font-display text-2xl text-walnut-brown">Send an enquiry</h2>
             <div className="mt-6">
               <ContactForm defaultSubject={defaultSubject} />
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal direction="right" delayMs={150}>
             <h2 className="font-display text-2xl text-walnut-brown">Visit or call</h2>
             <p className="mt-4 font-display text-lg text-walnut-brown">{PROPERTY_NAME}</p>
             <address className="mt-2 space-y-1 font-sans text-sm text-charcoal-ink/80 not-italic">
@@ -78,7 +79,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 label="Map — pending"
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

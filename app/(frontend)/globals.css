@@ -42,11 +42,78 @@ body {
     justify-content: center;
     gap: 0.5rem;
     border-radius: 9999px;
-    padding-inline: 1.5rem;
-    padding-block: 0.75rem;
+    padding-inline: 1.75rem;
+    padding-block: 0.8rem;
     font-family: var(--font-sans);
     font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     white-space: nowrap;
-    transition: background-color 150ms ease, color 150ms ease, opacity 150ms ease;
+    transition: background-color 150ms ease, color 150ms ease, opacity 150ms ease,
+      transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .btn-pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px -8px rgba(59, 42, 32, 0.35);
+  }
+
+  .btn-pill:active {
+    transform: translateY(0);
+  }
+
+  /* Soft, diffused elevation for cards/floating panels — per brand system,
+     no harsh drop shadows. */
+  .shadow-ambient {
+    box-shadow:
+      0 20px 40px -12px rgba(31, 46, 34, 0.12),
+      0 2px 8px -2px rgba(59, 42, 32, 0.06);
+  }
+
+  /* Continuous left-to-right auto-scroll for the hero's photo strip. The
+     track renders its image list twice back to back; animating from -50%
+     to 0% moves that doubled track rightward and loops seamlessly the
+     instant the first copy's start realigns with the viewport. */
+  @keyframes marquee-ltr {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  .animate-marquee-ltr {
+    animation: marquee-ltr 16s linear infinite;
+  }
+
+  /* Footer cursor trail (see components/CursorImageTrail.tsx): each tile
+     pops in near the cursor, holds briefly, then fades — timed to match
+     the 2s JS removal so the element never just vanishes mid-animation. */
+  @keyframes trail-pop {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+    15% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    25% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    75% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.92);
+    }
+  }
+
+  .animate-trail-pop {
+    animation: trail-pop 2s ease-out forwards;
   }
 }

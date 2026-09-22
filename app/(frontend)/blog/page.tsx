@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { BlogFilterGrid } from "@/components/blog/BlogFilterGrid";
+import { Reveal } from "@/components/Reveal";
 import { BLOG_POSTS } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -28,36 +29,40 @@ export default function BlogPage() {
         <p className="font-sans text-xs tracking-[0.2em] text-champagne-gold uppercase">
           Featured guide
         </p>
-        <Link
-          href={`/blog/${featuredPost.slug}`}
-          className="group mt-4 grid grid-cols-1 overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-shadow hover:shadow-lg lg:grid-cols-2"
-        >
-          <ImagePlaceholder
-            aspect="aspect-[4/3]"
-            variant={featuredPost.imageVariant}
-            label={`${featuredPost.title} — photography pending`}
-            className="lg:h-full"
-          />
-          <div className="flex flex-col justify-center gap-3 p-8 lg:p-10">
-            <p className="font-sans text-xs tracking-[0.15em] text-champagne-gold uppercase">
-              {featuredPost.category}
-            </p>
-            <h2 className="font-display text-2xl text-walnut-brown sm:text-3xl">
-              {featuredPost.title}
-            </h2>
-            <p className="font-sans text-base text-charcoal-ink/80">
-              {featuredPost.excerpt}
-            </p>
-            <div className="mt-2 flex items-center gap-4">
-              <span className="font-sans text-xs text-charcoal-ink/60">
-                {featuredPost.readTimeMinutes} min read
-              </span>
-              <span className="font-sans text-sm font-semibold text-walnut-brown underline-offset-4 group-hover:underline">
-                Read the guide &rarr;
-              </span>
+        <Reveal direction="zoom" delayMs={100}>
+          <Link
+            href={`/blog/${featuredPost.slug}`}
+            className="group mt-4 grid grid-cols-1 overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-shadow hover:shadow-lg lg:grid-cols-2"
+          >
+            <ImagePlaceholder
+              aspect="aspect-[4/3]"
+              variant={featuredPost.imageVariant}
+              label={`${featuredPost.title} — photography pending`}
+              src={featuredPost.imageSrc}
+              alt={`${featuredPost.title} — illustrative photo`}
+              className="lg:h-full"
+            />
+            <div className="flex flex-col justify-center gap-3 p-8 lg:p-10">
+              <p className="font-sans text-xs tracking-[0.15em] text-champagne-gold uppercase">
+                {featuredPost.category}
+              </p>
+              <h2 className="font-display text-2xl text-walnut-brown sm:text-3xl">
+                {featuredPost.title}
+              </h2>
+              <p className="font-sans text-base text-charcoal-ink/80">
+                {featuredPost.excerpt}
+              </p>
+              <div className="mt-2 flex items-center gap-4">
+                <span className="font-sans text-xs text-charcoal-ink/60">
+                  {featuredPost.readTimeMinutes} min read
+                </span>
+                <span className="font-sans text-sm font-semibold text-walnut-brown underline-offset-4 group-hover:underline">
+                  Read the guide &rarr;
+                </span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </Reveal>
       </section>
 
       {/* Filterable grid */}

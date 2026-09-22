@@ -12,6 +12,7 @@
  * should be presented to guests as an exact, hotel-confirmed detail.
  */
 import type { ImagePlaceholderProps } from "@/components/ui/ImagePlaceholder";
+import { STOCK_PHOTOS } from "@/lib/stockPhotos";
 
 export interface AccommodationCategory {
   slug: string;
@@ -21,6 +22,8 @@ export interface AccommodationCategory {
   occupancy: string;
   bedConfig: string;
   imageVariant: NonNullable<ImagePlaceholderProps["variant"]>;
+  /** Generic (non-property-specific) stock photo used until real photography exists. */
+  imageSrc?: string;
   /** 2-3 short highlights shown on the listing card. */
   highlightAmenities: string[];
   /** Long-form description paragraphs for the detail page. */
@@ -53,6 +56,7 @@ export const ACCOMMODATION_CATEGORIES: AccommodationCategory[] = [
     occupancy: "2 adults, or 2 adults + 1 child",
     bedConfig: "1 king or 2 twin beds",
     imageVariant: "sand",
+    imageSrc: STOCK_PHOTOS.roomDeluxe,
     highlightAmenities: ["Private balcony", "Garden/forest view", "Rain shower"],
     description: [
       "The Deluxe Room is the resort's entry point into Mindful Luxury — a spacious room finished in warm woods and soft, natural textiles that echo the walnut groves just outside. A private balcony opens onto the garden or forest, a quiet spot for a morning cup of tea before the hill station wakes up.",
@@ -69,6 +73,7 @@ export const ACCOMMODATION_CATEGORIES: AccommodationCategory[] = [
     occupancy: "2 adults, or 2 adults + 1 child",
     bedConfig: "1 king or 2 twin beds",
     imageVariant: "gold",
+    imageSrc: STOCK_PHOTOS.roomPremier,
     highlightAmenities: ["Private balcony", "Valley view", "Seating area"],
     description: [
       "Set higher in the resort's layout, the Premier Room looks out across the valley toward the Garhwal foothills — a view that changes with the light through the day. The private balcony is built for lingering, whether that means a slow breakfast or watching the hills fade into evening mist.",
@@ -85,6 +90,7 @@ export const ACCOMMODATION_CATEGORIES: AccommodationCategory[] = [
     occupancy: "2 adults + 2 children",
     bedConfig: "1 king bed, plus a sleeper sofa in the living area",
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.roomLuxurySuite,
     highlightAmenities: ["Separate living area", "Sleeper sofa", "Ideal for families"],
     description: [
       "The Luxury Suite separates rest from relaxation: a bedroom with plush, designer-dressed bedding, and beyond it, a distinct living area furnished with a sleeper sofa — room enough for a family to spread out without feeling like everyone shares a single space.",
@@ -105,6 +111,7 @@ export const ACCOMMODATION_CATEGORIES: AccommodationCategory[] = [
     occupancy: "2 adults + 2 children",
     bedConfig: "1 king bed, with a separate living and dining area",
     imageVariant: "walnut",
+    imageSrc: STOCK_PHOTOS.roomPresidentialSuite,
     highlightAmenities: [
       "Panoramic Himalayan views",
       "Separate living & dining area",

@@ -8,6 +8,7 @@
  * before launch.
  */
 import type { ImagePlaceholderProps } from "@/components/ui/ImagePlaceholder";
+import { STOCK_PHOTOS } from "@/lib/stockPhotos";
 
 export interface FacilityFAQ {
   question: string;
@@ -27,6 +28,8 @@ export interface Facility {
   /** One-line hook shown on the listing card. */
   hook: string;
   imageVariant: NonNullable<ImagePlaceholderProps["variant"]>;
+  /** Generic (non-property-specific) stock photo used until real photography exists. */
+  imageSrc?: string;
   /** Long-form description paragraphs for the detail page. */
   description: string[];
   faqs: FacilityFAQ[];
@@ -42,6 +45,7 @@ export const FACILITIES: Facility[] = [
     tag: "Spa & wellness",
     hook: "Provençal rituals, Himalayan stillness, and treatment suites built for two.",
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.spaTreatmentRoom,
     description: [
       "Cedar Spa by L'Occitane brings the Provençal wellness tradition into the Garhwal foothills, drawing on ingredients sourced from the other end of the earth — Shea from Burkina Faso, Immortelle from Corsica — and working them into rituals designed to slow the day down rather than rush through it.",
       "Therapists trained in Swedish, Balinese, and Shiatsu techniques tailor each session to what the body actually needs, whether that is deep, targeted pressure or a longer, gentler unwinding. Couple's treatment suites let two guests share the same quiet hour, side by side, with the forest just beyond the window.",
@@ -79,6 +83,7 @@ export const FACILITIES: Facility[] = [
     tag: "Wellness",
     hook: "A temperature-controlled pool for a swim whatever the mountain weather is doing.",
     imageVariant: "sand",
+    imageSrc: STOCK_PHOTOS.spaIndoorPool,
     description: [
       "The resort's indoor, temperature-controlled swimming pool stays comfortable through every season Mussoorie brings — a crisp winter morning or a cool monsoon afternoon included. It is the easiest way to keep a swim in the daily routine without checking the forecast first.",
       "Loungers set around the pool deck make it just as suited to an unhurried hour of reading as to laps, and the space stays quiet enough for guests looking to unwind before or after a treatment at Cedar Spa.",

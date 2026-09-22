@@ -9,6 +9,7 @@
  * /contact for current rates.
  */
 import type { ImagePlaceholderProps } from "@/components/ui/ImagePlaceholder";
+import { STOCK_PHOTOS } from "@/lib/stockPhotos";
 
 export interface Offer {
   slug: string;
@@ -17,6 +18,8 @@ export interface Offer {
   tagline: string;
   idealFor: string;
   imageVariant: NonNullable<ImagePlaceholderProps["variant"]>;
+  /** Generic (non-property-specific) stock photo used until real photography exists. */
+  imageSrc?: string;
   inclusions: string[];
   goodToKnow: string[];
 }
@@ -31,6 +34,7 @@ export const OFFERS: Offer[] = [
     idealFor:
       "Couples celebrating an anniversary, a proposal, or simply time away together.",
     imageVariant: "walnut",
+    imageSrc: STOCK_PHOTOS.spaCouplesSuite,
     inclusions: [
       "2 nights' accommodation in a Deluxe Room or higher, mountain- or valley-facing where available",
       "Daily breakfast for two",
@@ -52,6 +56,7 @@ export const OFFERS: Offer[] = [
     idealFor:
       "Families looking for an easy weekend in the hills without piecing the itinerary together themselves.",
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.spaIndoorPool,
     inclusions: [
       "2 nights' accommodation in a Premier Room or family-friendly suite category",
       "Daily breakfast and dinner for the family",
@@ -73,6 +78,7 @@ export const OFFERS: Offer[] = [
     idealFor:
       "Travellers planning a proper reset rather than a quick weekend away.",
     imageVariant: "sand",
+    imageSrc: STOCK_PHOTOS.spaTreatmentRoom,
     inclusions: [
       "3 nights' accommodation",
       "A daily spa treatment at Cedar Spa across the length of the stay",

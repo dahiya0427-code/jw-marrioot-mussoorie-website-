@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 
@@ -9,6 +10,8 @@ export interface ContentCardProps {
   meta?: string;
   imageLabel?: string;
   imageVariant?: "walnut" | "forest" | "sand" | "gold";
+  icon?: ReactNode;
+  imageSrc?: string;
 }
 
 /**
@@ -23,10 +26,23 @@ export function ContentCard({
   meta,
   imageLabel,
   imageVariant = "sand",
+  icon,
+  imageSrc,
 }: ContentCardProps) {
   const body = (
     <>
-      <ImagePlaceholder aspect="aspect-[4/3]" variant={imageVariant} label={imageLabel} />
+      <div className="overflow-hidden">
+        <div className="transition-transform duration-500 ease-out group-hover:scale-105">
+          <ImagePlaceholder
+            aspect="aspect-[4/3]"
+            variant={imageVariant}
+            label={imageLabel}
+            icon={icon}
+            src={imageSrc}
+            alt={imageLabel ?? title}
+          />
+        </div>
+      </div>
       <div className="flex flex-1 flex-col gap-2 p-5">
         {meta ? (
           <p className="font-sans text-xs tracking-[0.15em] text-champagne-gold uppercase">
@@ -45,7 +61,7 @@ export function ContentCard({
   );
 
   const className =
-    "group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-shadow hover:shadow-lg";
+    "group flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist transition-all duration-300 hover:-translate-y-1 hover:shadow-xl";
 
   if (href) {
     return (

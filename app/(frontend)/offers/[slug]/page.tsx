@@ -41,13 +41,17 @@ export default async function OfferDetailPage({ params }: OfferDetailPageProps) 
     <>
       {/* Hero */}
       <section className="relative flex min-h-[50vh] items-end overflow-hidden sm:min-h-[55vh]">
-        <ImagePlaceholder
-          aspect="aspect-auto"
-          variant={offer.imageVariant}
-          label={`${offer.name} — photography pending`}
-          className="absolute inset-0 h-full w-full"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-ink/70 via-charcoal-ink/20 to-transparent" />
+        <div className="absolute inset-0">
+          <ImagePlaceholder
+            aspect="aspect-auto"
+            variant={offer.imageVariant}
+            label={`${offer.name} — photography pending`}
+            src={offer.imageSrc}
+            alt={`${offer.name} — illustrative photo`}
+            className="h-full w-full"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-ink/75 via-charcoal-ink/25 to-transparent" />
         <div className="relative mx-auto w-full max-w-3xl px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
           <p className="font-sans text-xs tracking-[0.2em] text-champagne-gold uppercase">
             {offer.duration}

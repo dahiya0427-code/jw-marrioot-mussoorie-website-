@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
-import { Ticker } from "@/components/Ticker";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -45,7 +44,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           page carries the same structured data without repeating it.
         */}
         <JsonLd data={buildHotelSchema()} />
-        <Ticker />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

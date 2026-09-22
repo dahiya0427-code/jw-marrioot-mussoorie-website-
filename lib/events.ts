@@ -8,6 +8,7 @@
  * Events team at the time of booking.
  */
 import type { ImagePlaceholderProps } from "@/components/ui/ImagePlaceholder";
+import { STOCK_PHOTOS } from "@/lib/stockPhotos";
 
 export interface EventVenue {
   slug: string;
@@ -17,6 +18,8 @@ export interface EventVenue {
   capacity: string;
   hook: string;
   imageVariant: NonNullable<ImagePlaceholderProps["variant"]>;
+  /** Generic (non-property-specific) stock photo used until real photography exists. */
+  imageSrc?: string;
 }
 
 export const EVENT_VENUES: EventVenue[] = [
@@ -27,6 +30,7 @@ export const EVENT_VENUES: EventVenue[] = [
     capacity: "Seated up to 275",
     hook: "A pillarless ballroom that keeps sightlines open end to end, suited to a seated wedding banquet or a formal gala.",
     imageVariant: "walnut",
+    imageSrc: STOCK_PHOTOS.weddingBallroom,
   },
   {
     slug: "indoor-banquet-hall",
@@ -35,6 +39,7 @@ export const EVENT_VENUES: EventVenue[] = [
     capacity: "Seated 300 · floating 500",
     hook: "The resort's largest indoor gathering space, flexible enough for a seated banquet or a standing reception.",
     imageVariant: "gold",
+    imageSrc: STOCK_PHOTOS.weddingBanquetHall,
   },
   {
     slug: "outdoor-lawn",
@@ -43,6 +48,7 @@ export const EVENT_VENUES: EventVenue[] = [
     capacity: "Seated 140 · floating 350",
     hook: "An open-air lawn with a panoramic Himalayan backdrop, built for a ceremony or reception under the mountain sky.",
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.weddingOutdoorLawn,
   },
 ];
 

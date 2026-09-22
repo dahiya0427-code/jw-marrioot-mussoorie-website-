@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { EventEnquiryForm } from "@/components/EventEnquiryForm";
+import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { EVENT_VENUES, EVENTS_STATS } from "@/lib/events";
 import { buildEventVenuesSchema } from "@/lib/schema";
+import { STOCK_PHOTOS } from "@/lib/stockPhotos";
 
 export const metadata: Metadata = {
   title: "Weddings & Events",
@@ -22,41 +24,42 @@ export default function EventsPage() {
         title="A wedding, or a gathering, that feels like it belongs to the mountains"
         subhead={`One of the largest event infrastructures among luxury resorts in Uttarakhand, with capacity for ${EVENTS_STATS.totalGuestCapacity} across six event spaces.`}
         cta={{ label: "Start planning", href: "#start-planning" }}
+        imageSrc={STOCK_PHOTOS.weddingOutdoorLawn}
       />
 
       {/* Stats strip */}
       <section className="border-b border-hairline bg-ivory-mist py-10">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 text-center sm:grid-cols-3 sm:px-6 lg:px-8">
-          <div>
+          <Reveal direction="zoom" delayMs={0}>
             <p className="font-display text-3xl text-walnut-brown sm:text-4xl">
               {EVENTS_STATS.totalGuestCapacity}
             </p>
             <p className="mt-1 font-sans text-xs tracking-[0.15em] text-charcoal-ink/70 uppercase">
               Total guest capacity
             </p>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal direction="zoom" delayMs={100}>
             <p className="font-display text-3xl text-walnut-brown sm:text-4xl">
               {EVENTS_STATS.totalVenues}
             </p>
             <p className="mt-1 font-sans text-xs tracking-[0.15em] text-charcoal-ink/70 uppercase">
               Event spaces
             </p>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal direction="zoom" delayMs={200}>
             <p className="font-display text-3xl text-walnut-brown sm:text-4xl">
               {EVENTS_STATS.totalMeetingSpaceSqFt}
             </p>
             <p className="mt-1 font-sans text-xs tracking-[0.15em] text-charcoal-ink/70 uppercase">
               Combined indoor meeting space
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Venue comparison */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal direction="fade" className="mx-auto max-w-2xl text-center">
           <p className="font-sans text-xs tracking-[0.2em] text-champagne-gold uppercase">
             Three venues, one setting
           </p>
@@ -68,41 +71,46 @@ export default function EventsPage() {
             open sky, each venue is designed to hold its own — and to work
             together for a wedding that unfolds across more than one space.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {EVENT_VENUES.map((venue) => (
-            <div
+          {EVENT_VENUES.map((venue, index) => (
+            <Reveal
               key={venue.slug}
-              className="flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist"
+              delayMs={index * 120}
+              direction={index === 0 ? "left" : index === 2 ? "right" : "up"}
             >
-              <ImagePlaceholder
-                aspect="aspect-[4/3]"
-                variant={venue.imageVariant}
-                label={`${venue.name} — photography pending`}
-              />
-              <div className="flex flex-1 flex-col gap-2 p-6">
-                <p className="font-sans text-xs tracking-[0.15em] text-champagne-gold uppercase">
-                  {venue.tag}
-                </p>
-                <h3 className="font-display text-xl text-walnut-brown">
-                  {venue.name}
-                </h3>
-                <p className="font-sans text-sm font-semibold text-walnut-brown">
-                  {venue.capacity}
-                </p>
-                <p className="font-sans text-sm text-charcoal-ink/80">
-                  {venue.hook}
-                </p>
+              <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-ivory-mist">
+                <ImagePlaceholder
+                  aspect="aspect-[4/3]"
+                  variant={venue.imageVariant}
+                  label={`${venue.name} — photography pending`}
+                  src={venue.imageSrc}
+                  alt={`${venue.name} — illustrative photo`}
+                />
+                <div className="flex flex-1 flex-col gap-2 p-6">
+                  <p className="font-sans text-xs tracking-[0.15em] text-champagne-gold uppercase">
+                    {venue.tag}
+                  </p>
+                  <h3 className="font-display text-xl text-walnut-brown">
+                    {venue.name}
+                  </h3>
+                  <p className="font-sans text-sm font-semibold text-walnut-brown">
+                    {venue.capacity}
+                  </p>
+                  <p className="font-sans text-sm text-charcoal-ink/80">
+                    {venue.hook}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* MICE / corporate offsite */}
       <section className="bg-deep-forest py-16">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+        <Reveal direction="fade" className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <p className="font-sans text-xs tracking-[0.2em] text-champagne-gold uppercase">
             Meetings & incentives
           </p>
@@ -118,12 +126,12 @@ export default function EventsPage() {
             planning support and in-house catering carry through from a
             single boardroom meeting to a multi-day conference.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Start planning / enquiry form */}
       <section id="start-planning" className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <Reveal direction="up" className="text-center">
           <p className="font-sans text-xs tracking-[0.2em] text-champagne-gold uppercase">
             Start planning
           </p>
@@ -134,10 +142,10 @@ export default function EventsPage() {
             Share a few details and our Sales &amp; Events team will follow up
             to talk through venues, dates, and everything in between.
           </p>
-        </div>
-        <div className="mt-10">
+        </Reveal>
+        <Reveal direction="zoom" delayMs={150} className="mt-10">
           <EventEnquiryForm />
-        </div>
+        </Reveal>
       </section>
     </>
   );

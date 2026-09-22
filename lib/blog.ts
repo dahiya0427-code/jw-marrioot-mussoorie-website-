@@ -17,6 +17,7 @@ import {
   PROPERTY_STATS,
 } from "@/lib/property";
 import { EVENT_VENUES, EVENTS_STATS } from "@/lib/events";
+import { STOCK_PHOTOS } from "@/lib/stockPhotos";
 
 export type BlogCategory = "Travel Guides" | "Wellness" | "Weddings";
 
@@ -43,6 +44,8 @@ export interface BlogPost {
   excerpt: string;
   readTimeMinutes: number;
   imageVariant: NonNullable<ImagePlaceholderProps["variant"]>;
+  /** Generic (non-property-specific) editorial stock photo used until real photography exists. */
+  imageSrc?: string;
   /** Opening paragraph(s) shown before the first H2 section. */
   intro: string[];
   sections: BlogSection[];
@@ -60,6 +63,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Kempty Falls, Gun Hill, Mall Road, Cloud's End, and the Heritage Centre — a practical guide to Mussoorie's sights, with real distances and drive times from the resort.",
     readTimeMinutes: 9,
     imageVariant: "forest",
+    imageSrc: STOCK_PHOTOS.mountainValley,
     featured: true,
     intro: [
       `Mussoorie earned its old nickname, the "Queen of the Hills," long before it became a weekend favourite for travellers from Delhi and the plains — and its best-known sights are still what draw most first-time visitors. Staying at ${PROPERTY_NAME} puts a good spread of them within a short, scenic drive, so a few focused outings can cover most of the town's highlights without feeling rushed.`,
@@ -126,6 +130,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Road, rail, and air routes from Delhi to the resort, with real distances and drive times — from Jolly Grant Airport, Dehradun Railway Station, and the direct road route.",
     readTimeMinutes: 7,
     imageVariant: "walnut",
+    imageSrc: STOCK_PHOTOS.mountainValley,
     intro: [
       `Getting to Mussoorie from Delhi almost always means a final stretch by road, whatever route brings you to the region — the hill town itself has no airport or railway station of its own. Here is how the main options compare for travellers headed to ${PROPERTY_NAME}.`,
     ],
@@ -186,6 +191,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Be mindful and present, nourish the soul, come together — an approachable look at the three ideas behind JW Marriott's Mindful Luxury philosophy, and what they look like at Walnut Grove.",
     readTimeMinutes: 6,
     imageVariant: "gold",
+    imageSrc: STOCK_PHOTOS.spaTreatmentRoom,
     intro: [
       `"Mindful Luxury" can sound like brand copy until you see what it actually changes about a stay. At JW Marriott, it is the philosophy behind day-to-day decisions — from how spaces are designed to how service is delivered — built around three straightforward ideas. Here is what each one means in practice at ${PROPERTY_NAME}.`,
     ],
@@ -219,6 +225,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Guest logistics, venue choices, and seasonal timing for a hill-station destination wedding — framed around real event spaces and capacities at Walnut Grove.",
     readTimeMinutes: 8,
     imageVariant: "sand",
+    imageSrc: STOCK_PHOTOS.weddingOutdoorLawn,
     intro: [
       "A mountain wedding trades some of the convenience of a city venue for a setting most guests will remember for years — but that trade-off works best when the practical planning is handled early. Here is a sensible starting checklist, framed around the kind of event spaces a hill-station property like Walnut Grove actually offers.",
     ],
