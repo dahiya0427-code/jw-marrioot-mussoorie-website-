@@ -94,11 +94,13 @@ export function GuestDetailsStep({ guest, onChange, onBack, onNext }: GuestDetai
         </p>
       ) : null}
 
-      <div className="mt-8 flex justify-between">
+      <div className="mt-8 flex flex-wrap justify-between gap-3">
         <Button type="button" variant="outline" onClick={onBack}>
           Back
         </Button>
-        <Button type="submit">Continue to payment</Button>
+        <Button type="submit" className="w-full sm:w-auto">
+          Continue to payment
+        </Button>
       </div>
     </form>
   );

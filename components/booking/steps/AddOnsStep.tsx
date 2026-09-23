@@ -48,11 +48,11 @@ export function AddOnsStep({ addOnIds, onToggle, onBack, onNext }: AddOnsStepPro
         })}
       </div>
 
-      <div className="mt-8 flex justify-between">
+      <div className="mt-8 flex flex-wrap justify-between gap-3">
         <Button type="button" variant="outline" onClick={onBack}>
           Back
         </Button>
-        <Button type="button" onClick={onNext}>
+        <Button type="button" onClick={onNext} className="w-full sm:w-auto">
           Continue to guest details
         </Button>
       </div>

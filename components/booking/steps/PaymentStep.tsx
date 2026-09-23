@@ -207,12 +207,16 @@ export function PaymentStep({ state, onBookingCreated, onConfirmed, onUnconfigur
         ) : null}
       </div>
 
-      <div className="mt-8 flex justify-between">
+      <div className="mt-8 flex flex-wrap justify-between gap-3">
         <Button type="button" variant="outline" onClick={onBack} disabled={phase === "processing"}>
           Back
         </Button>
         {phase === "unconfigured" ? (
-          <Button type="button" onClick={() => onUnconfigured(state.reference ?? "")}>
+          <Button
+            type="button"
+            onClick={() => onUnconfigured(state.reference ?? "")}
+            className="w-full sm:w-auto"
+          >
             Continue
           </Button>
         ) : null}
