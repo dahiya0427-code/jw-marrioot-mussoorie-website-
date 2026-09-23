@@ -24,10 +24,15 @@
   --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--color-ivory-mist);
   color: var(--color-charcoal-ink);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 /*

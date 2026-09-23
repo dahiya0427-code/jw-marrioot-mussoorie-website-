@@ -159,7 +159,7 @@ export function Header() {
         instead of the full viewport. Keeping it outside avoids that.
       */}
       <div
-        className={`fixed inset-0 z-50 xl:hidden ${isMenuOpen ? "" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-50 overflow-hidden xl:hidden ${isMenuOpen ? "" : "pointer-events-none"}`}
         aria-hidden={!isMenuOpen}
       >
         <div
