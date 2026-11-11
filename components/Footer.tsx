@@ -138,9 +138,22 @@ export function Footer() {
               </Link>
             ))}
           </div>
-          <p className="font-sans text-xs text-ivory-mist/60">
-            &copy; {new Date().getFullYear()} {PROPERTY_NAME}. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-1 font-sans text-xs text-ivory-mist/60 sm:items-end">
+            <p>
+              &copy; {new Date().getFullYear()} {PROPERTY_NAME}. All rights reserved.
+            </p>
+            <p>
+              Website by{" "}
+              <a
+                href="https://pehchaandigital.com/"
+                target="_blank"
+                rel="noopener"
+                className="underline underline-offset-2 hover:text-champagne-gold"
+              >
+                Pehchaan Digital
+              </a>
+            </p>
+          </div>
         </div>
       </footer>
     </CursorImageTrail>
